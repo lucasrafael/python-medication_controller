@@ -1,0 +1,23 @@
+#####
+# Docker compose YAML file
+#
+# https://docs.docker.com/compose/yml
+#####
+version: "3.7"
+
+services:
+  app:
+    container_name: python_med-ctrl_web
+    build:
+      args:
+        user: userlocal
+        group: userlocal
+        uid: 1000
+        gid: 1000
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/usr/src/app    

@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+
+msgid ""
+msgstr ""
+
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-04 07:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+
+#########
+# Geral #
+#########
+msgid "html.title"
+msgstr "Controle de Medicamentos"
+
+
+#########
+# Marca #
+#########
+msgid "marca.inserida"
+msgstr "Marca inserida!"
+
+msgid "marca.alterada"
+msgstr "Marca alterada!"
+
+msgid "marca.excluida"
+msgstr "Marca excluída!"
+
+
+#############
+# Categoria #
+#############
+msgid "categoria.inserida"
+msgstr "Categoria inserida!"
+
+msgid "categoria.alterada"
+msgstr "Categoria alterada!"
+
+msgid "categoria.excluida"
+msgstr "Categoria excluída!"
+
+
+###############
+# Medicamento #
+###############
+msgid "medicamento.inserido"
+msgstr "Medicamento inserido!"
+
+msgid "medicamento.alterado"
+msgstr "Medicamento alterado!"
+
+msgid "medicamento.excluido"
+msgstr "Medicamento excluído!"
+
+
+###########
+# Usuário #
+###########
+msgid "usuario.invalido"
+msgstr "Login ou senha inválido!"
+
+msgid "usuario.cadastrado"
+msgstr "Usuário cadastrado!"
+
+msgid "usuario.senha.diferente"
+msgstr "Senha e Confirmação de Senha são divergentes!"
+
+
+#############
+# Paginação #
+#############
+msgid "page.first"
+msgstr "Primeiro"
+
+msgid "page.previous"
+msgstr "Anterior"
+
+msgid "page.next"
+msgstr "Próximo"
+
+msgid "page.last"
+msgstr "Último"
+
+msgid "page.name"
+msgstr "Página"
+
+msgid "page.sep"
+msgstr "de"

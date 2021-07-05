@@ -1,0 +1,8 @@
+# High-level Python Web framework
+Django==3.2.4
+
+# DateTime package
+DateTime==4.3
+
+# Python YAML Parser
+PyYAML==5.4.1

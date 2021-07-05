@@ -1,0 +1,41 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-copyright"></span>&nbsp;
+            {% if isToDelete %}
+                Remo&ccedil;&atilde;o da categoria
+            {% else %}
+                Detalhes da categoria
+            {% endif %}
+        </h3>
+    </div>
+
+    <div class="panel-body">
+
+        {% if isToDelete %}
+            <form method="get" action="/categoria/delete/{{ categoria.id }}">
+        {% endif %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p><b>Identificador:</b> {{ categoria.id }}</p>
+                    <p><b>Nome:</b> {{ categoria.nome }}</p>
+                </div>
+            </div>
+
+        {% if isToDelete %}
+                <button type="submit" class="btn btn-danger" {% if not user.is_authenticated %} disabled {% endif %}>Remover</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Cancelar</a>
+            </form>
+        {% endif %}
+
+    </div>
+</div>
+
+{% if not isToDelete %}
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Voltar</a>
+{% endif %}
+
+{% endblock %}

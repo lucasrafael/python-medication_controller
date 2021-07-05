@@ -1,0 +1,46 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-copyright"></span>&nbsp;
+            {% if categoria %}
+                Altera&ccedil;&atilde;o de categoria
+            {% else %}
+               Inser&ccedil;&atilde;o de categoria
+            {% endif %}
+        </h3>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h4>Categoria</h4>
+    
+                <hr>
+    
+                <form method="post">
+    
+                    {% csrf_token %}
+    
+                    <div class="form-group">
+                        <label for="nome"><span class="text-danger">*</span>Nome</label>
+                        {{ form.nome }}
+                    </div>
+    
+                    {% if categoria %}
+                        <input class="btn btn-primary" type="submit" value="Editar" {% if not user.is_authenticated %} disabled {% endif %}>
+                    {% else %}
+                        <input class="btn btn-primary" type="submit" value="Inserir" {% if not user.is_authenticated %} disabled {% endif %}>
+                    {% endif %}
+    
+                </form>
+    
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

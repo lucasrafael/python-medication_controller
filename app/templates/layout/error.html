@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-thumbs-down alert-danger"></span>&nbsp;
+            Falha na solicita&ccedil;&atilde;o
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 text-danger">
+                <p><strong>C&oacute;digo:</strong>&nbsp;{{ code }}</p>
+                <p><strong>Erro:</strong>&nbsp;{{ msg }}</p>
+
+                {% if ex %}
+                    <p><strong>Mensagem:</strong>&nbsp;{{ ex }}</p>        
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Voltar</a>
+
+{% endblock %}

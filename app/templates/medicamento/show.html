@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-briefcase-medical"></span>&nbsp;
+            {% if isToDelete %}
+                Remo&ccedil;&atilde;o do medicamento
+            {% else %}
+                Detalhes do medicamento
+            {% endif %}
+        </h3>
+    </div>
+
+    <div class="panel-body">
+
+        {% if isToDelete %}
+            <form method="get" action="/medicamento/delete/{{ medicamento.id }}">
+        {% endif %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p><b>Identificador:</b> {{ medicamento.id }}</p>
+                    <p><b>Nome:</b> {{ medicamento.nome }}</p>
+                    <p><b>Descri&ccedil;&atilde;o:</b> {{ medicamento.descricao }}</p>
+                    <p><b>Prescri&ccedil;&atilde;o:</b> {{ medicamento.prescricao }}</p>
+                    <p><b>Validade:</b> {{ medicamento.validade|date:"d/m/Y" }}</p>
+                    <p><b>Quantidade:</b> {{ medicamento.quantidade }}</p>
+                    <p><b>Marca:</b> {{ medicamento.marca.nome }}</p>
+                    <p><b>Categoria:</b> {{ medicamento.categoria.nome }}</p>
+                </div>
+            </div>
+
+        {% if isToDelete %}
+                <button type="submit" class="btn btn-danger" {% if not user.is_authenticated %} disabled {% endif %}>Remover</button>
+                <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Cancelar</a>
+            </form>
+        {% endif %}
+
+    </div>
+</div>
+
+{% if not isToDelete %}
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Voltar</a>
+{% endif %}
+
+{% endblock %}

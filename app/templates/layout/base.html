@@ -1,0 +1,25 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        {% include 'layout/head.html' %}
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-dark bg-dark navbar-fixed-top shadow-px">
+            {% include 'layout/navbar.html' %}
+        </nav>
+        <div class="container">
+            {% include 'layout/msg.html' %}
+
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer class="text-primary">
+            {% include 'layout/footer.html' %}
+        </footer>
+    </body>
+</html>

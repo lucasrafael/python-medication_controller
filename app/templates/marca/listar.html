@@ -1,0 +1,70 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-copyright"></span>&nbsp;
+            Listagem de marcas
+        </h3>
+    </div>
+
+    <form method="post" action="/marca/list">
+
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Digite a parte inicial do nome da marca" name="nome" value="{{ nome }}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Pesquisar</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th class="column-order-color text-center">Nome <i class="fa fa-caret-up"></i></th>
+                        <th>Medicamentos</th>
+                        <th colspan="3" class="text-center">A&ccedil;&otilde;es</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for marca in marcas %}
+                        <tr>
+                            <td>{{marca.nome}}</td>
+                            <td><a href="/marca/{{marca.id}}/medicamentos">Listar medicamentos</a></td>
+
+                            {% if user.is_authenticated %}
+                                <td class="text-center"><a href="/marca/edit/{{marca.id}}"><i class="glyphicon glyphicon-pencil"></i></a></td>        
+                            {% else %}
+                                <td class="text-center" title="Deve-se logar!"><i class="glyphicon glyphicon-pencil"></i></td>
+                            {% endif %}
+
+                            {% if user.is_authenticated %}
+                                <td class="text-center"><a href="/marca/show/delete/{{marca.id}}"><i class="glyphicon glyphicon-trash"></i></a></td>
+                            {% else %}
+                                <td class="text-center" title="Deve-se logar!"><i class="glyphicon glyphicon-trash"></i></td>
+                            {% endif %}
+
+                            <td class="text-center"><a href="/marca/show/{{marca.id}}"><i class="glyphicon glyphicon-zoom-in"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% include 'layout/pagination.html' with page=marcas %}
+
+</div>
+
+<a href="/marca/new"><button class="btn btn-primary" {% if not user.is_authenticated %} disabled {% endif %}>Adicionar</button></a>
+
+{% endblock %}

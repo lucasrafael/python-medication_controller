@@ -1,0 +1,30 @@
+{% if messages %}
+    
+    {% for message in messages %}
+
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible">
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+            <div class="alert alert-warning alert-dismissible">
+        {% else %}
+            <div class="alert alert-success alert-dismissible">
+        {% endif %}
+
+                {% include 'layout/msg-date.html' %}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+            </div>
+
+    {% endfor %}
+
+    <script>
+        $(document).ready(function(){
+            $(".alert-success").fadeTo(3000, 1000).slideUp(1000, function(){
+                $(".alert-success").alert("close");
+            });
+            $(".alert-warning").fadeTo(3000, 1000).slideUp(1000, function(){
+                $(".alert-success").alert("close");
+            });
+        });
+    </script>
+{% endif %}

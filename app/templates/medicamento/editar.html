@@ -1,0 +1,136 @@
+{% extends 'layout/base.html' %}
+
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-briefcase-medical"></span>&nbsp;
+            {% if medicamento %}
+                Altera&ccedil;&atilde;o de medicamento
+            {% else %}
+               Inser&ccedil;&atilde;o de medicamento
+            {% endif %}
+        </h3>
+    </div>
+    <div class="panel-body">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <h4>Rem&eacute;dio</h4>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nome"><span class="text-danger">*</span>Nome</label>
+                        {{ form.nome }}
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="descricao"><span class="text-danger">*</span>Descri&ccedil;&atilde;o</label>
+                        {{ form.descricao }}
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="validade"><span class="text-danger">*</span>Validade</label>
+                        {{ form.validade }}
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group">
+                        <label for="qtdQuartos"><span class="text-danger">*</span>Quant.</label>
+                        {{ form.quantidade }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="prescricao">Prescri&ccedil;&atilde;o</label>
+                        {{ form.prescricao }}
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Marca</h4>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="marca"><span class="text-danger">*</span>Selecione a marca</label>
+                        <select class="form-control" name="marca" required>
+                            <option value="">---</option>
+                            {% for marca in marcas %}
+                                <option value="{{ marca.id }}"
+
+                                    {% if medicamento.marca.id and medicamento.marca.id == marca.id %}
+                                        selected
+                                    {% endif %}
+
+                                >
+                                {{ marca.nome }}
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h4>Categoria</h4>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="categoria"><span class="text-danger">*</span>Selecione a categoria</label>
+                        <select class="form-control" name="categoria" required>
+                            <option value="">---</option>
+                            {% for categoria in categorias %}
+                                <option value="{{ categoria.id }}"
+
+                                    {% if medicamento.categoria.id == categoria.id %}
+                                        selected
+                                    {% endif %}
+
+                                >
+                                {{ categoria.nome }}
+                                </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            {% if medicamento %}
+                <button type="submit" class="btn btn-primary" {% if not user.is_authenticated %} disabled {% endif %}>Editar</button>
+            {% else %}
+                <button type="submit" class="btn btn-primary" {% if not user.is_authenticated %} disabled {% endif %}>Cadastrar</button>
+            {% endif %}
+
+        </form>
+    </div>
+    
+    {% if LANGUAGE_CODE == 'pt-BR' %}
+
+        {% include './datapicker_pt-BR.html' %}
+
+    {% else %}
+
+        {% include './datapicker_en.html' %}
+
+    {% endif %}
+
+{% endblock %}

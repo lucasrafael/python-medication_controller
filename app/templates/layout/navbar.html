@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Troca de navega&ccedil;&atilde;o</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand noselect">Controle de Medicamentos</div>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/"><i class="fa fa-home"></i>&nbsp;Início</a></li>
+            <li><a href="/marca/list"><i class="fa fa-copyright"></i>&nbsp;Marcas</a></li>
+            <li><a href="/categoria/list"><i class="fa fa-list"></i>&nbsp;Categorias</a></li>
+            <li><a href="/medicamento/list"><i class="fa fa-briefcase-medical"></i>&nbsp;Medicamentos</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="/admin" target="_blank" title="&Aacute;rea administrativa"><i class="fa fa-key"></i>&nbsp;</a></li>
+
+            {% if user.is_authenticated %}
+                <li><div class="username"><strong>login:</strong>&nbsp;{{ user.username }}</div></li>
+                <li><a href="/usuario/logout"><i class="fa fa-power-off"></i>&nbsp;Sair</a></li>
+            {% else %}
+                <li><a href="/usuario/new"><i class="fa fa-edit"></i> Registrar</a></li>
+                <li><a href="/usuario/login"><i class="fa fa-key"></i> Login</a></li>            
+            {% endif %}
+        </ul>
+    </div>
+</div>

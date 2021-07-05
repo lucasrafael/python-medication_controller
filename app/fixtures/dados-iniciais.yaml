@@ -1,0 +1,48 @@
+- model: app.marca
+  pk: 1
+  fields:
+    nome: 'Marca 1'
+- model: app.marca
+  pk: 2
+  fields:
+    nome: 'Marca 2'
+
+- model: app.categoria
+  pk: 1
+  fields:
+    nome: 'Categoria 1'
+- model: app.categoria
+  pk: 2
+  fields:
+    nome: 'Categoria 2'
+
+- model: app.medicamento
+  pk: 1
+  fields:
+    nome: 'Medicamento 1'
+    descricao: 'M. Decrição 1'
+    prescricao: 'M. Prescrição 1'
+    validade: '2021-10-01'
+    quantidade: 1
+    marca: 1
+    categoria: 1
+- model: app.medicamento
+  pk: 2
+  fields:
+    nome: 'Medicamento 2'
+    descricao: 'M. Decrição 2'
+    prescricao: 'M. Prescrição 2'
+    validade: '2022-11-02'
+    quantidade: 2
+    marca: 2
+    categoria: 2
+- model: app.medicamento
+  pk: 3
+  fields:
+    nome: 'Medicamento 3'
+    descricao: 'M. Decrição 3'
+    prescricao: 'M. Prescrição 3'
+    validade: '2023-12-03'
+    quantidade: 3
+    marca: 
+    categoria: 

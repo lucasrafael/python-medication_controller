@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading img-responsive">
+        <h3><span class="fa fa-list"></span>&nbsp;
+            Listagem de medicamentos por marca
+        </h3>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Marca: <strong>{{ marca.nome }}</strong></h4>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="column-order-color text-center">Nome <i class="fa fa-caret-up"></i></th>
+                            <th>Ver informa&ccedil;&otilde;es</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for medicamento in medicamentos %}
+                            <tr>
+                                <td>{{ medicamento.nome }}</td>
+                                <td><a href="/medicamento/show/{{ medicamento.id }}">Visualizar medicamento</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="{{ request.META.HTTP_REFERER }}" class="btn btn-default">Voltar</a>
+
+{% endblock %}

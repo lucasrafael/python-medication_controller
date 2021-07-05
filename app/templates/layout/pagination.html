@@ -1,0 +1,42 @@
+{% load i18n %}
+
+{% trans "page.first" as first %}
+{% trans "page.previous" as previous %}
+{% trans "page.next" as next %}
+{% trans "page.last" as last %}
+
+{% trans "page.name" as name %}
+{% trans "page.sep" as sep %}
+
+<style>
+    .pagination {
+        text-align: center;
+        width: 100%; 
+        margin: -10px 0 10px 0;
+    }
+    .pagination .current {
+        font-size: 13px;
+    }
+    .pagination .step-links {
+        font-size: 14px;
+    }
+</style>
+<nav role="navigation" aria-label="Pagination Navigation" class="pagination">
+
+    <div class="current">
+        {{ name }} {{ page.number }} {{ sep }} {{ page.paginator.num_pages }}
+    </div>
+
+    <div class="step-links">
+        {% if page.has_previous %}
+            <a href="?page=1">{{ first }}</a>&nbsp;|
+            <a href="?page={{ page.previous_page_number }}">&laquo; {{ previous }}</a>
+        {% endif %}
+
+        {% if page.has_next %}
+            <a href="?page={{ page.next_page_number }}">{{ next }} &raquo;</a>&nbsp;|
+            <a href="?page={{ page.paginator.num_pages }}">{{ last }}</a>
+        {% endif %}
+    </div>
+
+</nav>
