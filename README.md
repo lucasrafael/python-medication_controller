@@ -50,7 +50,7 @@ docker-compose up --build
 docker exec -it <CONTAINER_ID> python manage.py loaddata dados-iniciais.yaml
 ```
 
-- Compilação das mensagens presentenes em **app/locale/**, caso tenham sido previamente modificadas:
+- Compilação das mensagens presentes em **app/locale/**, caso tenham sido previamente modificadas:
 ```sh
 docker exec -it <CONTAINER_ID> django-admin compilemessages --settings=locale
 ```
